@@ -1,19 +1,3 @@
-/**
- * Welcome to Cloudflare Workers! This is your first worker.
- *
- * - Run `npm run dev` in your terminal to start a development server
- * - Open a browser tab at http://localhost:8787/ to see your worker in action
- * - Run `npm run deploy` to publish your worker
- *
- * Bind resources to your worker in `wrangler.toml`. After adding bindings, a type definition for the
- * `Env` object can be regenerated with `npm run cf-typegen`.
- *
- * Learn more at https://developers.cloudflare.com/workers/
- */
-
-/// Cloudflare OpenAI worker: https://openai-api-worker.r-salehjan.workers.dev
-/// Cloudflare AI gateway: https://gateway.ai.cloudflare.com/v1/119e6a647b254157e00e8dd335535eab/stock-predictions/
-
 import OpenAI from 'openai';
 
 const corsHeaders = {
