@@ -14,7 +14,7 @@
 /// Cloudflare OpenAI worker: https://openai-api-worker.r-salehjan.workers.dev
 /// Cloudflare AI gateway: https://gateway.ai.cloudflare.com/v1/119e6a647b254157e00e8dd335535eab/stock-predictions/
 
-import OpenAI from 'openai/index.mjs';
+import OpenAI from 'openai';
 
 const corsHeaders = {
 	'Access-Control-Allow-Origin': '*',
