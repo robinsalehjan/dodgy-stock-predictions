@@ -19,7 +19,7 @@ export default {
 			'Access-Control-Allow-Methods': 'POST, OPTIONS',
 			'Access-Control-Allow-Headers': 'Content-Type'
 		};
-		
+
 		// Handle CORS preflight requests
 		if (request.method === 'OPTIONS') {
 			return new Response(null, { headers: corsHeaders });
@@ -37,7 +37,10 @@ export default {
 
 		const openai = new OpenAI({
 			apiKey: env.OPENAI_API_KEY,
-			baseURL: 'https://gateway.ai.cloudflare.com/v1/119e6a647b254157e00e8dd335535eab/dodgy-stock-predictions/openai'
+			baseURL: 'https://gateway.ai.cloudflare.com/v1/119e6a647b254157e00e8dd335535eab/dodgy-stock-predictions/openai',
+			defaultHeaders: {
+				'cf-aig-authorization': `Bearer ${env.AUTH_OPENAI_STOCK_PREDICTIONS_WORKER}`
+			}
 		});
 
 		try {
