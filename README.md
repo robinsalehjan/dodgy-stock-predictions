@@ -1,14 +1,14 @@
 # Dodgy Stock Predictions
 
-This repository demonstrates a sample integration of CloudFlare Workers, Pages, and OpenAI to create a stock prediction application.
+This repository demonstrates a sample integration of `CloudFlare Workers`, `CloudFlare AI Gateway`, `CloudFlare Pages`, and `OpenAI` to create a application that predicts stock prices.
 
 ## Getting Started
 
 ### Prerequisites
-- `Node.js`
+- `node.js`
 - `npm`
 
-### Running frontend locally with workers on CloudFlare
+### Running frontend on your machine
 1. Clone the repository:
    ```sh
    git clone https://github.com/robinsalehjan/dodgy-stock-predictions.git
@@ -19,16 +19,3 @@ This repository demonstrates a sample integration of CloudFlare Workers, Pages, 
    ```sh
    cd web && npm install && npm run start
    ```
-
-## Running workers locally
-1. [Create API key for `OpenAI`](https://platform.openai.com/settings/profile?tab=api-keys)
-
-2. [Create API key for `Polygon`](https://polygon.io/dashboard/keys)
-
-3. Create `.dev.vars` file at the root of `openai-stock-predictions-worker` and `polygon-api-worker` projects
-
-4. Install dependencies for each seperate `worker` and start them locally
-  ```sh
-  cd workers && cd openai-stock-predictions-worker && npm install && npm run start
-  cd workers && cd polygon-api-worker && npm install && npm run start
-  ```
