@@ -76,7 +76,7 @@ async function fetchReport(data) {
     ]
 
     try {
-        const url = 'https://openai-api-worker.r-salehjan.workers.dev'
+        const url = 'https://openai-stock-predictions-worker.r-salehjan.workers.dev'
 
         const response = await fetch(url, {
             method: 'POST',

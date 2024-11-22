@@ -1,5 +1,5 @@
 {
-  "name": "openai-api-worker",
+  "name": "openai-stock-predictions-worker",
   "version": "0.0.0",
   "private": true,
   "scripts": {

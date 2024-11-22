@@ -25,10 +25,10 @@ This repository demonstrates a sample integration of CloudFlare Workers, Pages, 
 
 2. [Create API key for `Polygon`](https://polygon.io/dashboard/keys)
 
-3. Create `.dev.vars` file at the root of `openai-api-worker` and `polygon-api-worker` projects
+3. Create `.dev.vars` file at the root of `openai-stock-predictions-worker` and `polygon-api-worker` projects
 
 4. Install dependencies for each seperate `worker` and start them locally
   ```sh
-  cd workers && cd openai-api-worker && npm install && npm run start
+  cd workers && cd openai-stock-predictions-worker && npm install && npm run start
   cd workers && cd polygon-api-worker && npm install && npm run start
   ```
