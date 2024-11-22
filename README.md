@@ -1,6 +1,6 @@
 # Dodgy Stock Predictions
 
-This repository demonstrates a sample integration of `CloudFlare Workers`, `CloudFlare AI Gateway`, `CloudFlare Pages`, and `OpenAI` to create a application that predicts stock prices.
+This repository is a simple stock predictions app demostrating the use and integration between  `CloudFlare Workers`, `CloudFlare AI Gateway`, `CloudFlare Pages` and `OpenAI API`.
 
 ## Getting Started
 
