@@ -1,19 +1,14 @@
 import OpenAI from 'openai';
 
-const allowedOrigins: Array<string> = [
-	'http://localhost:5173',
-	'https://dodgy-stock-predictions.pages.dev',
-];
-
-const corsHeaders = {
-	'Access-Control-Allow-Origin': '*',
-	'Access-Control-Allow-Methods': 'POST, OPTIONS',
-	'Access-Control-Allow-Headers': 'Content-Type',
-};
-
 export default {
 	async fetch(request, env, ctx): Promise<Response> {
+		const allowedOrigins: Array<string> = [
+			'http://localhost:5173',
+			'https://dodgy-stock-predictions.pages.dev',
+		];
+		
 		const origin = request.headers.get('Origin') || '';
+		
 		const corsHeaders = {
 			'Access-Control-Allow-Origin': allowedOrigins.includes(origin) ? origin : '',
 			'Access-Control-Allow-Methods': 'POST, OPTIONS',
