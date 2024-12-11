@@ -1,6 +1,6 @@
 {
-  "name": "Scrim-s0d589doh5",
-  "description": "https://v2.scrimba.com/the-ai-engineer-path-c02v/~015",
+  "name": "web",
+  "description": "",
   "scripts": {
     "start": "vite",
     "dev": "vite",
