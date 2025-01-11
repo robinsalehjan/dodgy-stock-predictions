@@ -1,6 +1,6 @@
 # [Dodgy Stock Predictions](https://dodgy-stock-predictions.pages.dev/)
 
-This repository is a stock predictions application demonstrating the integration between `CloudFlare Workers`, `CloudFlare AI Gateway`, `CloudFlare Pages` and `OpenAI API` for generating humorous stock predictions.
+This repository is a stock predictions application demonstrating the integration between CloudFlare Workers, CloudFlare AI Gateway, CloudFlare Pages and OpenAI API for generating humorous stock predictions.
 
 ## Architecture
 
