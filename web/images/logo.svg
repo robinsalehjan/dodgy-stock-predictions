@@ -1,0 +1,141 @@
+<svg viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradient for background -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#16213e;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Gradient for main text -->
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ff6b6b;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#ffa500;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ffd700;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Green gradient for up arrow -->
+    <linearGradient id="greenGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00ff88;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00cc66;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Red gradient for down arrow -->
+    <linearGradient id="redGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff4757;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#c44569;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Filter for glow effect -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Filter for crazy text effect -->
+    <filter id="crazyText">
+      <feTurbulence baseFrequency="0.02" numOctaves="3" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="1"/>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="120" fill="url(#bgGradient)" rx="10"/>
+  
+  <!-- Decorative stock chart lines in background -->
+  <g opacity="0.1">
+    <path d="M20,80 Q50,60 80,70 T140,50 T200,65 T260,45 T320,55 T380,40" stroke="#ffa500" stroke-width="2" fill="none"/>
+    <path d="M20,90 Q60,85 100,75 T180,80 T280,70 T380,85" stroke="#ff6b6b" stroke-width="1.5" fill="none"/>
+  </g>
+  
+  <!-- Crazy Dave character -->
+  <g transform="translate(25, 25)">
+    <!-- Head -->
+    <circle cx="25" cy="25" r="20" fill="#ffdbac" stroke="#d4af7a" stroke-width="2"/>
+    
+    <!-- Wild hair -->
+    <path d="M10,15 Q5,8 12,10 Q8,3 15,8 Q12,0 20,5 Q18,-2 25,3 Q28,-1 32,6 Q35,1 38,8 Q42,4 40,12 Q45,8 42,15" 
+          fill="#8b4513" stroke="#654321" stroke-width="1"/>
+    
+    <!-- Eyes (slightly crossed/crazy) -->
+    <circle cx="18" cy="22" r="3" fill="white"/>
+    <circle cx="32" cy="20" r="3" fill="white"/>
+    <circle cx="19" cy="21" r="1.5" fill="black"/>
+    <circle cx="31" cy="19" r="1.5" fill="black"/>
+    
+    <!-- Nose -->
+    <path d="M25,25 L23,28 L27,28 Z" fill="#d4af7a"/>
+    
+    <!-- Mouth (crooked smile) -->
+    <path d="M20,32 Q25,38 32,33" stroke="#8b4513" stroke-width="2" fill="none"/>
+    
+    <!-- Tie (askew) -->
+    <path d="M25,45 L22,50 L25,65 L28,50 Z" fill="#ff0000" transform="rotate(5 25 50)"/>
+    <rect x="20" y="42" width="10" height="8" fill="#000080" transform="rotate(5 25 50)"/>
+  </g>
+  
+  <!-- Main title "Dodgy Dave's" -->
+  <text x="85" y="45" font-family="Arial Black, sans-serif" font-size="24" font-weight="bold" 
+        fill="url(#textGradient)" filter="url(#glow)" transform="rotate(-1)">
+    Dodgy Dave's
+  </text>
+  
+  <!-- Subtitle with wobbly effect -->
+  <text x="85" y="70" font-family="Arial, sans-serif" font-size="16" font-weight="bold" 
+        fill="#4ecdc4" filter="url(#crazyText)" transform="rotate(0.5)">
+    Stock Predictions
+  </text>
+  
+  <!-- Tagline -->
+  <text x="85" y="85" font-family="Arial, sans-serif" font-size="10" 
+        fill="#ffa500" opacity="0.9" transform="rotate(-0.3)">
+    Always correct 15% of the time! 📈📉
+  </text>
+  
+  <!-- Chaotic arrows (representing volatile predictions) -->
+  <g opacity="0.8">
+    <!-- Up arrow -->
+    <path d="M340,20 L335,30 L345,30 Z" fill="url(#greenGradient)" transform="rotate(15 340 25)"/>
+    <rect x="338" y="25" width="4" height="20" fill="url(#greenGradient)" transform="rotate(15 340 25)"/>
+    
+    <!-- Down arrow -->
+    <path d="M370,50 L365,40 L375,40 Z" fill="url(#redGradient)" transform="rotate(-10 370 45)"/>
+    <rect x="368" y="25" width="4" height="20" fill="url(#redGradient)" transform="rotate(-10 370 45)"/>
+    
+    <!-- Sideways arrow (confusion) -->
+    <path d="M350,70 L340,65 L340,75 Z" fill="#ffa500" transform="rotate(5 345 70)"/>
+    <rect x="340" y="68" width="15" height="4" fill="#ffa500" transform="rotate(5 345 70)"/>
+  </g>
+  
+  <!-- Dollar signs floating around -->
+  <g opacity="0.6" fill="#00ff88" font-family="Arial Black" font-size="12">
+    <text x="300" y="25" transform="rotate(20 300 25)">$</text>
+    <text x="320" y="85" transform="rotate(-15 320 85)" opacity="0.4">$</text>
+    <text x="360" y="100" transform="rotate(10 360 100)" font-size="8">$</text>
+  </g>
+  
+  <!-- Question marks (uncertainty) -->
+  <g opacity="0.5" fill="#ff6b6b" font-family="Arial Black" font-size="14">
+    <text x="310" y="100" transform="rotate(-20 310 100)">?</text>
+    <text x="380" y="30" transform="rotate(25 380 30)" font-size="10">?</text>
+  </g>
+  
+  <!-- Exclamation mark (excitement/danger) -->
+  <text x="290" y="45" fill="#ffd700" font-family="Arial Black" font-size="16" 
+        transform="rotate(12 290 45)" opacity="0.7">!</text>
+  
+  <!-- Subtle sparkle effects -->
+  <g opacity="0.8">
+    <circle cx="120" cy="25" r="1" fill="#fff">
+      <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="280" cy="35" r="0.8" fill="#ffd700">
+      <animate attributeName="opacity" values="0;1;0" dur="1.5s" repeatCount="indefinite" begin="0.5s"/>
+    </circle>
+    <circle cx="350" y="85" r="1.2" fill="#ff6b6b">
+      <animate attributeName="opacity" values="0;1;0" dur="2.5s" repeatCount="indefinite" begin="1s"/>
+    </circle>
+  </g>
+</svg>

@@ -9,26 +9,70 @@ generateReportBtn.addEventListener('click', fetchStockData)
 document.getElementById('ticker-input-form').addEventListener('submit', (e) => {
     e.preventDefault()
     const tickerInput = document.getElementById('ticker-input')
+    const label = document.getElementsByTagName('label')[0]
+
+    if (tickersArr.length >= 3) {
+        label.style.color = '#e74c3c'
+        label.textContent = '⚠️ Maximum of 3 tickers allowed. Please generate your report or refresh to start over.'
+        return
+    }
+
     if (tickerInput.value.length > 2) {
+        // Reset label styling
+        label.style.color = '#333'
+        label.textContent = '📈 Add up to 3 stock tickers below to get a super accurate stock predictions report 👇'
+
         generateReportBtn.disabled = false
         const newTickerStr = tickerInput.value
         tickersArr.push(newTickerStr.toUpperCase())
         tickerInput.value = ''
         renderTickers()
+
+        // Add some visual feedback
+        tickerInput.style.backgroundColor = '#e8f5e8'
+        setTimeout(() => {
+            tickerInput.style.backgroundColor = ''
+        }, 300)
     } else {
-        const label = document.getElementsByTagName('label')[0]
-        label.style.color = 'red'
-        label.textContent = 'You must add at least one ticker. A ticker is a 3 letter or more code for a stock. E.g TSLA for Tesla.'
+        label.style.color = '#e74c3c'
+        label.textContent = '❌ You must add at least one ticker. A ticker is a 3+ letter code for a stock (e.g., TSLA for Tesla).'
     }
 })
 
 function renderTickers() {
     const tickersDiv = document.querySelector('.ticker-choice-display')
+
+    if (tickersArr.length === 0) {
+        tickersDiv.innerHTML = 'Your tickers will appear here...'
+        tickersDiv.style.color = '#999'
+        return
+    }
+
     tickersDiv.innerHTML = ''
-    tickersArr.forEach((ticker) => {
+    tickersDiv.style.color = '#333'
+
+    tickersArr.forEach((ticker, index) => {
         const newTickerSpan = document.createElement('span')
         newTickerSpan.textContent = ticker
         newTickerSpan.classList.add('ticker')
+        newTickerSpan.setAttribute('role', 'listitem')
+        newTickerSpan.setAttribute('aria-label', `Stock ticker ${ticker}`)
+
+        // Add click to remove functionality
+        newTickerSpan.style.cursor = 'pointer'
+        newTickerSpan.title = 'Click to remove'
+        newTickerSpan.addEventListener('click', () => {
+            tickersArr.splice(index, 1)
+            renderTickers()
+            if (tickersArr.length === 0) {
+                generateReportBtn.disabled = true
+            }
+            // Reset label when ticker is removed
+            const label = document.getElementsByTagName('label')[0]
+            label.style.color = '#333'
+            label.textContent = '📈 Add up to 3 stock tickers below to get a super accurate stock predictions report 👇'
+        })
+
         tickersDiv.appendChild(newTickerSpan)
     })
 }
@@ -47,12 +91,15 @@ async function fetchStockData() {
                 const errMsg = await response.text()
                 throw new Error('Worker error: ' + errMsg)
             }
-            apiMessage.innerText = 'Creating report...'
+            apiMessage.innerText = '🤖 Creating your report...'
             return response.text()
         }))
         fetchReport(stockData.join(''))
     } catch (err) {
-        loadingArea.innerText = 'There was an error fetching stock data.'
+        loadingArea.innerHTML = `
+            <img src="images/loader.svg" alt="error" style="filter: hue-rotate(0deg);">
+            <div style="color: #e74c3c; font-weight: 500;">❌ There was an error fetching stock data. Please try again.</div>
+        `
         console.error(err.message)
     }
 }
@@ -93,7 +140,10 @@ async function fetchReport(data) {
         renderReport(data.content)
     } catch (err) {
         console.error(err.message)
-        loadingArea.innerText = 'Unable to access AI. Please refresh and try again'
+        loadingArea.innerHTML = `
+            <img src="images/loader.svg" alt="error" style="filter: hue-rotate(0deg);">
+            <div style="color: #e74c3c; font-weight: 500;">🤖 Unable to access AI. Please refresh and try again.</div>
+        `
     }
 }
 

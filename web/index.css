@@ -2,7 +2,9 @@ html, body {
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
-    background-color: #f6f6f6;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
 }
 
 * {
@@ -12,79 +14,146 @@ html, body {
 header {
     display: flex;
     justify-content: center;
-    padding: 1em;
-    background-color: black;
-    margin: 0 auto;
+    padding: 2em 1em;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 header img {
-    width: 340px;
+    width: 300px;
+    max-width: 90vw;
+    height: auto;
+    filter: drop-shadow(0 2px 10px rgba(255, 255, 255, 0.3));
 }
 
 main {
     display: flex;
     justify-content: center;
+    align-items: flex-start;
+    padding: 2em 1em;
+    min-height: calc(100vh - 200px);
 }
 
 /* Panels */
 
 .action-panel, .output-panel {
-    line-height: 1.4em;
+    line-height: 1.6em;
     display: flex;
-    height: 350px;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    margin: 1.5em 2em;
+    margin: 0 2em;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 3em 2em;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    max-width: 500px;
+    width: 100%;
+    min-height: 450px;
+    transition: all 0.3s ease;
+}
+
+.action-panel:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
 }
 
 .output-panel {
     display: none;
     justify-content: flex-start;
-    border: 2px solid;
-    padding: 1em 2em;
+    border: none;
+    padding: 2em;
+    background: rgba(255, 255, 255, 0.95);
 }
 
 .loading-panel {
     display: none;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
     height: 400px;
     text-align: center;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 3em 2em;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    max-width: 500px;
+    width: 100%;
+    margin: 0 2em;
+}
+
+.loading-panel img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 1em;
 }
 
 .output-panel p{
-    overflow-y: scroll;
+    overflow-y: auto;
+    max-height: 300px;
+    padding: 1em;
+    background: rgba(248, 250, 252, 0.8);
+    border-radius: 12px;
+    line-height: 1.7;
+    font-size: 15px;
 }
 
 /* text */
 
 h2 {
     text-align: center;
-    font-weight: 400; 
-    margin-top: -26px;
-    background-color: #f6f6f6;
-    padding: 0 10px;
-    font-size: 18px;
-    margin-bottom: 0;
+    font-weight: 600;
+    margin-top: -45px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    padding: 0 15px;
+    font-size: 22px;
+    margin-bottom: 1em;
+    letter-spacing: 0.5px;
 }
 
 p.tag-line {
     font-family: 'Comic Neue';
     font-weight: 700;
-    font-size: 14px;
+    font-size: 16px;
+    color: #666;
+    text-align: center;
+    margin-top: 1em;
+    padding: 0.8em 1.5em;
+    background: linear-gradient(45deg, #ffeaa7, #fdcb6e);
+    border-radius: 25px;
+    box-shadow: 0 4px 15px rgba(253, 203, 110, 0.3);
+    border: none;
 }
 
 .ticker-choice-display {
     display: flex;
     align-items: center;
-    height: 3em; 
+    justify-content: center;
+    min-height: 4em;
+    padding: 1em;
+    background: rgba(248, 250, 252, 0.8);
+    border-radius: 12px;
+    margin: 1.5em 0;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    font-weight: 500;
+    color: #333;
 }
 
 /* controls */
 
 form {
-    width: 360px;
+    width: 100%;
+    max-width: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -92,21 +161,47 @@ form {
 
 label {
     text-align: center;
-    padding: .43em;
-    font-size: 15px;
-    margin-bottom: 1em;
-    width: 80%;
+    padding: 1em;
+    font-size: 16px;
+    margin-bottom: 1.5em;
+    width: 100%;
+    font-weight: 500;
+    color: #333;
+    line-height: 1.5;
 }
 
 .form-input-control {
     display: flex;
-    width: 70%;
+    width: 100%;
+    max-width: 350px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.form-input-control:focus-within {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
 }
 
 input[type="text"] {
-    padding: 1em;
-    border: 2px solid black;
-    border-right: none;
+    flex: 1;
+    padding: 1.2em 1.5em;
+    border: none;
+    background: white;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]::placeholder {
+    color: #999;
+}
+
+input[type="text"]:focus {
+    background: #f8fafc;
 }
 
 /* Buttons */
@@ -114,43 +209,85 @@ input[type="text"] {
 .add-ticker-btn {
     display: flex;
     align-items: center;
-    background-color: #ffffff;
-    font-size: 3em;
-    padding: 0 .35em;
+    justify-content: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 1.2em 1.5em;
     cursor: pointer;
-    border: 2px solid;
+    border: none;
+    transition: all 0.3s ease;
+    min-width: 60px;
 }
 
 .add-ticker-btn:hover {
-    background-color: #d2d2d2;
+    background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+    transform: scale(1.05);
+}
+
+.add-ticker-btn:active {
+    transform: scale(0.98);
 }
 
 .add-ticker-svg {
-    width: 14px;
+    width: 18px;
+    height: 18px;
+    filter: brightness(0) invert(1);
 }
 
 .generate-report-btn {
-    width: 70%;
-    padding: 1em 1.5em;
+    width: 100%;
+    max-width: 350px;
+    padding: 1.2em 2em;
     cursor: pointer;
-    font-family: 'Poppins', sans;
-    border: 2px solid #000000;
-    background-color: #46ff90;
+    font-family: 'Poppins', sans-serif;
+    border: none;
+    background: linear-gradient(135deg, #00b894 0%, #00a085 100%);
+    color: white;
     text-transform: uppercase;
-    font-weight: 500;
-    letter-spacing: .09em;
-    font-size: 105%;
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-size: 16px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 184, 148, 0.3);
+    transition: all 0.3s ease;
+    margin: 1.5em 0;
+}
+
+.generate-report-btn:hover:not(:disabled) {
+    background: linear-gradient(135deg, #00a085 0%, #008f75 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(0, 184, 148, 0.4);
+}
+
+.generate-report-btn:disabled {
+    background: #ddd;
+    color: #999;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
 }
 
 /* ticker display (ensure comma separated) */
 
 .ticker {
-    margin: 0 .1em;
-    content: '';
+    margin: 0 0.3em;
+    padding: 0.5em 1em;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 14px;
+    box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
+    transition: all 0.3s ease;
+}
+
+.ticker:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
 }
 
 .ticker:after {
-    content: ',';
+    content: '';
 }
 
 .ticker:last-child::after {
@@ -162,13 +299,130 @@ input[type="text"] {
 footer {
     font-size: 14px;
     text-align: center;
+    padding: 2em 1em;
+    color: rgba(255, 255, 255, 0.8);
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    margin-top: auto;
+}
+
+/* Responsive design */
+
+@media (max-width: 768px) {
+    header img {
+        width: 250px;
+    }
+
+    main {
+        padding: 1em 0.5em;
+    }
+
+    .action-panel, .output-panel, .loading-panel {
+        margin: 0 1em;
+        padding: 2em 1.5em;
+        min-height: auto;
+    }
+
+    .form-input-control {
+        max-width: 100%;
+    }
+
+    .generate-report-btn {
+        max-width: 100%;
+    }
+
+    h2 {
+        font-size: 18px;
+        margin-top: -35px;
+    }
+
+    label {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 1.5em 1em;
+    }
+
+    header img {
+        width: 200px;
+    }
+
+    .action-panel, .output-panel, .loading-panel {
+        margin: 0 0.5em;
+        padding: 1.5em 1em;
+    }
+
+    input[type="text"] {
+        padding: 1em;
+        font-size: 14px;
+    }
+
+    .add-ticker-btn {
+        padding: 1em;
+    }
+
+    .generate-report-btn {
+        font-size: 14px;
+        padding: 1em 1.5em;
+    }
 }
 
 /* stop ugly scroll bar on some browsers */
 .output-panel p::-webkit-scrollbar {
-    display: none;
+    width: 8px;
+}
+
+.output-panel p::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+}
+
+.output-panel p::-webkit-scrollbar-thumb {
+    background: rgba(102, 126, 234, 0.3);
+    border-radius: 4px;
+}
+
+.output-panel p::-webkit-scrollbar-thumb:hover {
+    background: rgba(102, 126, 234, 0.5);
 }
 
 .output-panel p::-moz-scrollbar {
     display: none;
+}
+
+/* Loading animation */
+.loading-panel img {
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Add some subtle animations */
+.action-panel, .output-panel, .loading-panel {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* API message styling */
+#api-message {
+    font-size: 16px;
+    color: #666;
+    font-weight: 500;
+    margin-top: 1em;
 }
