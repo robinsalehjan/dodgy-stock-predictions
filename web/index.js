@@ -78,7 +78,7 @@ function renderTickers() {
 }
 
 const loadingArea = document.querySelector('.loading-panel')
-const apiMessage = document.getElementById('api-message')
+let apiMessage = document.getElementById('api-message')
 
 async function fetchStockData() {
     document.querySelector('.action-panel').style.display = 'none'
@@ -97,8 +97,7 @@ async function fetchStockData() {
         fetchReport(stockData.join(''))
     } catch (err) {
         loadingArea.innerHTML = `
-            <img src="images/loader.svg" alt="error" style="filter: hue-rotate(0deg);">
-            <div style="color: #e74c3c; font-weight: 500;">❌ There was an error fetching stock data. Please try again.</div>
+            <div style="color: #e74c3c; font-weight: 500; text-align: center;">❌ There was an error fetching stock data. Please refresh and try again.</div>
         `
         console.error(err.message)
     }
@@ -141,8 +140,7 @@ async function fetchReport(data) {
     } catch (err) {
         console.error(err.message)
         loadingArea.innerHTML = `
-            <img src="images/loader.svg" alt="error" style="filter: hue-rotate(0deg);">
-            <div style="color: #e74c3c; font-weight: 500;">🤖 Unable to access AI. Please refresh and try again.</div>
+            <div style="color: #e74c3c; font-weight: 500; text-align: center;">🤖 Unable to access AI. Please refresh and try again.</div>
         `
     }
 }
@@ -150,8 +148,13 @@ async function fetchReport(data) {
 function renderReport(output) {
     loadingArea.style.display = 'none'
     const outputArea = document.querySelector('.output-panel')
+    const reportContent = document.querySelector('.report-content')
     const report = document.createElement('p')
-    outputArea.appendChild(report)
+
+    // Clear any existing content
+    reportContent.innerHTML = ''
+    reportContent.appendChild(report)
     report.textContent = output
+
     outputArea.style.display = 'flex'
 }
